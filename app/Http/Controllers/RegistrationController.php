@@ -68,7 +68,8 @@ class RegistrationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editdata = DB::table('registarions')->find($id);
+        return view('editform', ['ed'=>$editdata]);
     }
 
     /**
@@ -80,7 +81,15 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name   = $request->input('fname');
+        $mobile = $request->input('mobile');
+        $email  = $request->input('email');
+
+        $data = ['name'=>$name, 'mobile'=>$mobile, 'email'=>$email];
+        //dd($data);
+        DB::table('registarions')->where('id',$id)->update($data);
+        return redirect(route('showpg'))->with('ustatus','update succesfulyy');
+
     }
 
     /**
@@ -91,6 +100,7 @@ class RegistrationController extends Controller
      */
     public function destroy($id)
     {
-        //
+       DB::table('registarions')->where('id',$id)->delete();
+       return redirect(route('showpg'));
     }
 }
