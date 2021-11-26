@@ -16,9 +16,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navmenu">
         <div class="navbar-nav">
-            <a href="#" class="nav-item nav-link active">Home</a>
-            <a href="#" class="nav-item nav-link">New Data</a>
-            <a href="#" class="nav-item nav-link">Retrieve</a>
+            <a href="{{ route('homepg') }}" class="nav-item nav-link {{Request::routeIs('homepg') ? 'active' : ''}}">Home</a>
+            <a href="{{ route('formpg') }}" class="nav-item nav-link {{Request::routeIs('formpg') ? 'active' : ''}}">New Data</a>
+            <a href="{{ route('showpg') }}" class="nav-item nav-link {{Request::routeIs('showpg') ? 'active' : ''}}">Retrieve</a>
         </div>
     </div>
 </nav>
